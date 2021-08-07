@@ -23,6 +23,13 @@ console.log('lesson 2');
 
 // Task 01
 // Реализовать функцию sum которая суммирует 2 числа следующим образом sum(3)(6) === 9
+function sum(num: number) {
+    return function(num2: number) {
+        return num + num2
+    }
+}
+
+console.log(sum(3)(6))
 
 // Task 02
 // Реализовать функцию makeCounter которая работает следующим образом:
@@ -33,6 +40,20 @@ console.log('lesson 2');
 // counter2(); // 1
 // counter(); // 3
 
+function makeCounter() {
+    let num = 1
+    return function setCounter() {
+        return num++
+    }
+}
+
+let counter = makeCounter()
+let counter2 = makeCounter()
+
+console.log(counter()) //1
+console.log(counter()) // 2
+console.log(counter2()) // 1
+
 // Task 03
 // Переписать функцию из Task 02 так, что бы она принимала число в качестве аргумента и это число было стартовым значением счетчика
 // и возвращала следующий объект методов:
@@ -40,6 +61,27 @@ console.log('lesson 2');
 // decrease: -1
 // reset: установить счетчик в 0;
 // set: установить счетчик в заданное значение;
+
+function makeCounter2(num: number) {
+    return {
+        increase() {
+            return num + 1
+        },
+        decrease() {
+            return num - 1
+        },
+        reset() {
+            return num = 0
+        },
+        set() {
+            return num
+        }
+    }
+
+}
+
+const counter3 = makeCounter2(2);
+console.log(counter3.increase())
 
 // Task 04*
 // Реализовать функцию superSum которая принимает число в качестве аргумента, которое указывает на количество слагаемых
@@ -51,13 +93,69 @@ console.log('lesson 2');
 // 5) superSum(3)(2,5)(3) //10
 // 6) superSum(3)(2,5)(3,9) //10
 
+
+function superSum(num: number) {
+    if (num <= 0) return 0
+    if (num === 1) return (n: number) => n
+
+    let _arguments: number[] = [];
+
+    function helper(...args: number[]) {
+        _arguments = [..._arguments, ...args]
+        if (_arguments.length >= num) {
+            _arguments.length = num
+            return _arguments.reduce((acc, number) => acc + number)
+        } else {
+            return helper
+        }
+    }
+
+    return helper
+
+}
+
 // P.S. типизируйте только аргументы, а при вызове функции используйте @ts-ignore
+
+// Рекурсия
+let a = 1;
+
+function rec() {
+    return a++
+    console.log(a)
+    if (a > 10) {
+        return a
+    }
+    rec()
+}
+
+rec()
 
 // Task 05
 // решить все задачи по рекурсии которые даны в конце статьи https://learn.javascript.ru/recursion
+
+//sumTo(1) = 1
+//sumTo(2) = 2 + 1 = 3
+//sumTo(3) = 3 + 2 + 1 = 6
+
+function sumTo(num: number) {
+    let result = 0;
+    for (let i = num; i >= 1; i--) {
+        result = i + result
+    }
+    return result
+}
+
+// С рекурсией
+function sumToWithRecursion(num: number): number {
+    if (num === 1) {
+        return num
+    }
+    return num + sumToWithRecursion(num - 1)
+}
 
 // Task 06
 // написать функцию, которая повторяет функционал метода flat массива на всю глубину.
 
 // just a plug
-export default () => {};
+export default () => {
+};
