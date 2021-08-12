@@ -1,7 +1,6 @@
 console.log('lesson 3');
 
 
-
 // Event loop
 // https://learn.javascript.ru/event-loop
 // https://habr.com/ru/company/ruvds/blog/340508/
@@ -17,6 +16,23 @@ console.log('lesson 3');
 // https://jsonplaceholder.typicode.com/posts/1
 // https://habr.com/ru/company/oleg-bunin/blog/417461/?_ga=2.54695343.543933152.1602500664-1040035071.1596811661
 
+// let promise = new Promise((res, rej) => {
+//     let a: number = 5
+//     res(a)
+// })
+//
+// console.log(promise)
+//
+// promise
+//     .then(value => {
+//         return {data: value, something: 'Yo'}
+//     })
+//     .then(data => {
+//         // @ts-ignore
+//         console.log(data.data + 1)
+//     })
+
 
 // just a plug
-export default ()=>{};
+export default () => {
+};
