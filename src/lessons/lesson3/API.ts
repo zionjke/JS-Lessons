@@ -3,11 +3,13 @@ import axios from 'axios';
 const configOMB = {
     baseURL: 'http://www.omdbapi.com',
 };
-const key = '';
+const key = '?apikey=995f97b1';
 const axiosInstance = axios.create(configOMB);
 
-const API = {
+export const API = {
     searchFilmsByTitle: (title: string) => {
+        const query = `${key}&s=${title}`;
+        return axiosInstance.get(query)
     },
     searchFilmsByType: (title: string, type: string) => {
     }
@@ -34,3 +36,8 @@ const API = {
 
 
 export default API;
+
+// @flow
+import * as React from 'react';
+
+
