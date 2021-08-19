@@ -12,6 +12,8 @@ export const API = {
         return axiosInstance.get(query)
     },
     searchFilmsByType: (title: string, type: string) => {
+        const query = `${key}&s=${title}&=${type}`;
+        return axiosInstance.get(query)
     }
 };
 
@@ -37,7 +39,5 @@ export const API = {
 
 export default API;
 
-// @flow
-import * as React from 'react';
 
 
