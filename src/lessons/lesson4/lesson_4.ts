@@ -71,7 +71,7 @@ export const handlePromise: testObjType = {
         console.log(`Promise is resolved with data: ${paramName}`)
     },
     onError: (paramName: string) => {
-        `Promise is rejected with error: ${paramName}`
+        console.log(`Promise is rejected with error: ${paramName}`)
     }
 };
 
@@ -107,6 +107,29 @@ export const rejectPromise = () => {
 // второй промис возвращает объект {age: 16} через 3 с, а третий {city: ''} через 4с.
 // Получите результаты работы промисов, объедините свойства объектов
 // и выведите в консоль {name, age, city}
+
+let pr4 = new Promise((res, rej) => {
+    setTimeout(() => {
+        res({name: 'Anna'})
+    }, 2000)
+})
+
+let pr5 = new Promise((res, rej) => {
+    setTimeout(() => {
+        res({age: 16})
+    }, 3000)
+})
+
+let pr6 = new Promise((res, rej) => {
+    setTimeout(() => {
+        res({city: ""})
+    }, 3000)
+})
+
+let promise = Promise.all([pr4, pr5, pr6])
+promise.then(data => {
+    return Object.assign(...data)
+}).then(data => console.log(data))
 
 
 // just a plug

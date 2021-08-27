@@ -30,10 +30,18 @@ type someObjType = {
     age: number;
 }
 
-let someObj:someObjType = {
+let someObj: someObjType = {
     name: 'Eugene',
     age: 32
 }
+
+function greeting() {
+    // @ts-ignore
+    return console.log(`My name is ${this.name}. I am ${this.age}`)
+}
+
+greeting.bind(someObj)()
+
 
 // Task 02
 // реализовать счетчик counter в виде объекта со следующими методами:
@@ -43,6 +51,29 @@ let someObj:someObjType = {
 // set current count; - принимает и присваивает значение счетчику
 // rest current count - устанавливает значение счетчика равным 0
 // все методы должны ссылаться на сам объект
+
+const counter = {
+    value: 0,
+    getCurrentCount() {
+        return this.value
+    },
+    increment() {
+        ++this.value
+        return this.value
+    },
+    decrement() {
+        --this.value
+        return this.value
+    },
+    setCurrentCount(value: number) {
+        this.value = value
+        return this.value
+    },
+    restCurrentCount() {
+        this.value = 0
+        return this.value
+    }
+}
 
 // Task 03
 // переделайте код из Task 02, что бы сработал следующий код:
@@ -55,7 +86,11 @@ let someObj:someObjType = {
 // Task 05 есть 2 объекта One и Two. С помощью bind и метода sayHello заставьте поздороваться объект One
 
 let One = {name: 'One'};
-let Two = {name: 'Two', sayHello: function() {console.log(`Hello, my name is ${this.name}`)}};
+let Two = {
+    name: 'Two', sayHello: function () {
+        console.log(`Hello, my name is ${this.name}`)
+    }
+};
 
 // Task 06
 // создайте объект helperObj у которого есть следующие методы:
@@ -67,7 +102,9 @@ let Two = {name: 'Two', sayHello: function() {console.log(`Hello, my name is ${t
 // Bind
 // 1) Дана функция sumTwoNumbers, реализовать функцию bindNumber которая принимает функцию sumTwoNumbers и число, и
 // возвращает другую функцию, которое также принимает число и возвращает сумму этих чисел. Замыкание использовать нельзя
-function sumTwoNumbers(a:number,b:number):number {return a + b};
+function sumTwoNumbers(a: number, b: number): number {
+    return a + b
+};
 
 // 2) Напишите функцию которая принимает первым аргументом объект One, а вторым helperObj. Данная функция
 // возвращает другую функцию которая принимает строку в качестве аргумента и устанавливает ее свойству name объекта One
@@ -77,6 +114,6 @@ function sumTwoNumbers(a:number,b:number):number {return a + b};
 // Реализовать задачи 2-4 из Bind с помощью Call
 
 
-
 // just a plug
-export default () => {};
+export default () => {
+};
