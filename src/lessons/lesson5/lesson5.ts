@@ -87,10 +87,13 @@ const counter = {
 
 let One = {name: 'One'};
 let Two = {
-    name: 'Two', sayHello: function () {
+    name: 'Two',
+    sayHello: function () {
         console.log(`Hello, my name is ${this.name}`)
     }
 };
+
+Two.sayHello.bind(One)()
 
 // Task 06
 // создайте объект helperObj у которого есть следующие методы:
@@ -112,6 +115,7 @@ function sumTwoNumbers(a: number, b: number): number {
 // 4) Создать метод hi у объекта One, который всегда вызывает метод greeting объекта helperObj от имени Two
 
 // Реализовать задачи 2-4 из Bind с помощью Call
+
 
 
 // just a plug

@@ -1,4 +1,8 @@
+// @ts-nocheck
+import {log} from "util";
+
 console.log('lesson 4');
+
 
 // http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D
 // https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
@@ -130,6 +134,36 @@ let promise = Promise.all([pr4, pr5, pr6])
 promise.then(data => {
     return Object.assign(...data)
 }).then(data => console.log(data))
+
+
+const arr = [1, 2, 3, 4]
+
+const arr2 = arr.map((item, index) => {
+    return Array(index + 1).fill(item)
+})
+
+console.log(arr2)
+
+const obj = {name: 'test'}
+const obj2 = {age: "2"}
+const obj3 = {
+    name: 'test3', toString() {
+        return this.name
+    }
+}
+
+obj[obj2] = 100;
+obj[obj3] = 'hey'
+obj[{}] = 400
+console.log(obj)
+
+Function.prototype.myBind = function (context, ...args) {
+    const that = this
+    return function (...newArgs) {
+        that.apply(context, args.concat(newArgs))
+    }
+}
+
 
 
 // just a plug
