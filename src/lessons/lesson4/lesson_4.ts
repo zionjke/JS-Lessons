@@ -1,5 +1,6 @@
 // @ts-nocheck
 import {log} from "util";
+import {getFCP} from "web-vitals";
 
 console.log('lesson 4');
 
@@ -164,6 +165,40 @@ Function.prototype.myBind = function (context, ...args) {
     }
 }
 
+
+function accum(s) {
+    return s.split('').map((c, i) => c.toUpperCase() + c.toLowerCase().repeat(i)).join('-')
+}
+
+console.log(accum('abcd'))
+
+function highAndLow(numbers) {
+    let array = numbers.split(' ').map(item => Number(item))
+    // let minValue = array.reduce((prev, value) => prev < value ? prev : value)
+    // let maxValue = array.reduce((prev, value) => prev > value ? prev : value)
+    // return [maxValue, minValue].join(' ')
+    return `${Math.max(...array)} ${Math.min(...array)}`
+}
+
+String.prototype.toJadenCase = function () {
+    return this.split(' ').map(c => c.charAt(0).toUpperCase() + c.slice(1)).join(' ')
+};
+
+let str = "How can mirrors be real if our eyes aren't real"
+console.log(str.toJadenCase())
+
+
+function findMultiples(integer, limit) {
+    let arr = []
+    for (let i = 1; i <= limit; i++) {
+        let result = i * integer
+        arr.push(result)
+        if (result > (limit - integer)) break;
+    }
+    return arr
+}
+
+console.log(findMultiples(4, 27))
 
 
 // just a plug
